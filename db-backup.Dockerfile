@@ -12,7 +12,8 @@ ARG DISTRO_VERSION="3.12"
 FROM python:${RUNTIME_VERSION}-alpine${DISTRO_VERSION} AS python-alpine
 # Install GCC (Alpine uses musl but we compile and link dependencies with GCC)
 RUN apk add --no-cache \
-    libstdc++
+    libstdc++ \
+    jq
 
 # Stage 2 - build function and dependencies
 FROM python-alpine AS build-image
